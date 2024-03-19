@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Google Material Icon Sharp -->
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+			rel="stylesheet"
+		/>
+
+		<!-- Font Awesome -->
+		<script
+			src="https://kit.fontawesome.com/f411181642.js"
+			crossorigin="anonymous"
+		></script>
+
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="./css/style.css" />
+
+		<!-- Nav JS -->
+		<script src="./js/index.js" defer></script>
+
+		<!-- Favicon -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="./images/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./images/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="./images/favicon-16x16.png"
+		/>
+		<link rel="manifest" href="./images/site.webmanifest" />
+
+		<!-- Leaflet Map -->
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+			integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+			crossorigin=""
+		/>
+		<script
+			src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+			integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+			crossorigin=""
+		></script>
+
+		<title>Leaflet's Map</title>
+	</head>
+	<body>
+		<header>
+			<h1>#PICKYOURPLACE</h1>
+		</header>
+		<main class="flex-col-center">
+			<section class="hero flex-col-center">
+				<div class="hero--pic">
+					<img src="./images/profil.jpg" alt="Asthito" />
+				</div>
+				<div class="hero--info flex-col-center">
+					<h1>Made Asthito Yogi Prasanna</h1>
+					<h2>2105551078</h2>
+					<div class="hero--contact flex-row-center">
+						<a
+							href="https://github.com/MadeAsthito"
+							target="_blank"
+							class="icon black flex-row-center"
+						>
+							<i class="fa-brands fa-github"></i>
+						</a>
+						<a
+							href="https://www.linkedin.com/in/made-asthito-yogi-prasanna-496520289"
+							target="_blank"
+							class="icon blue flex-row-center"
+						>
+							<i class="fa-brands fa-linkedin-in"></i>
+						</a>
+						<a
+							href="mailto:madeasthito.yogi@gmail.com"
+							target="_blank"
+							class="icon red flex-row-center"
+						>
+							<i class="fa-solid fa-envelope"></i>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="about-me">
+				<h1>Peta Lokasi Fakultas Teknik Universitas Udayana</h1>
+			</section>
+			<section class="map">
+				<div class="map--group" id="map_id"></div>
+				<div class="cta flex-row-center">
+					<a target="_blank" href="">
+						<button class="cta--btn download-btn">Generate Distance</button>
+					</a>
+				</div>
+			</section>
+			<section class="about-me">
+				<p>
+					Hello 👋 I'm <b class="text-blue">Made Asthito Yogi Prasanna</b>,
+					studying Teknologi Informasi at Udayana University's Teknik Faculty. I
+					specialize in creating <b>smooth websites</b> and <b>apps.</b>
+				</p>
+				<p>
+					My main interests lie in <b>Full-Stack</b> and
+					<b>Backend Development</b>. I relish crafting user-friendly front ends
+					and powerful back ends.
+				</p>
+				<p>
+					During an internship at <b class="text-sub">SOUL GROUP</b>, I learned
+					under a seasoned mentor, gaining practical skills and real project
+					exposure.
+				</p>
+				<p>
+					Beyond studies, I stay updated on tech trends. Challenges fuel me, and
+					I'm committed to <b>personal</b> and <b>professional growth</b>.
+				</p>
+				<p>
+					Continuing my Udayana journey, I'm eager to learn and contribute to
+					the tech field. My aim:
+					<b class="text-green"
+						>building applications simplifying lives in our digital world</b
+					>. Join me on this exciting adventure!
+				</p>
+			</section>
+		</main>
+		<footer>
+			<h1>@ Made Asthito Y.P 2024</h1>
+		</footer>
+
+		<script>
+			// Menampilkan peta
+			var mymap = L.map("map_id").setView(
+				[-8.795279032677602, 115.17553347766035],
+				12
+			);
+
+			// Format popup content
+			formatContent = function (text, lat, lng) {
+				return `
+                <div>${text}</div>
+                <div>Lat : ${lat}</div>
+                <div>Lng : ${lng}</div>
+            `;
+			};
+
+			// Menambahkan layer peta
+			L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+				attribution:
+					'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+				maxZoom: 18,
+			}).addTo(mymap);
+
+			// Membuat icon dari gambar PNG
+			var myIcon = L.icon({
+				iconUrl: "https://gis.manpits.xyz/icon.png",
+				iconSize: [40, 40],
+				iconAnchor: [20, 40],
+			});
+
+			// Menambahkan marker
+			var marker = L.marker([-8.795279032677602, 115.17553347766035], {
+				icon: myIcon,
+			}).addTo(mymap);
+
+			// // Membuat popup baru
+			var popup = L.popup({ offset: [0, -30] })
+				.setLatLng(marker.getLatLng())
+				.setContent(
+					formatContent(
+						"Universitas Udayana Fakultas Teknik",
+						marker.getLatLng().lat,
+						marker.getLatLng().lng
+					)
+				);
+
+			// // Binding popup ke marker
+			marker.bindPopup(popup);
+
+			// Marker Lokasi Anda
+			addMarker = function (latlng) {
+				// Menambahkan marker
+				var marker = L.marker(latlng, {
+					icon: myIcon,
+					draggable: true,
+				}).addTo(mymap);
+
+				// Membuat popup baru
+				var popup = L.popup({ offset: [0, -30] }).setLatLng(latlng);
+
+				// Binding popup ke marker
+				marker.bindPopup(popup);
+
+				// Menambahkan event listener pada marker
+				marker.on("click", function () {
+					popup.setLatLng(marker.getLatLng()),
+						popup.setContent(
+							formatContent(
+								"Lokasi Anda",
+								marker.getLatLng().lat,
+								marker.getLatLng().lng
+							)
+						);
+				});
+
+				marker.on("dragstart", function (event) {
+					isOnDrag = true;
+				});
+
+				// Menambahkan event listener pada marker
+				marker.on("drag", function (event) {
+					popup.setLatLng(marker.getLatLng()),
+						popup.setContent(
+							formatContent(
+								"Lokasi Anda",
+								marker.getLatLng().lat,
+								marker.getLatLng().lng
+							)
+						);
+					marker.openPopup();
+				});
+
+				marker.on("dragend", function (event) {
+					setTimeout(function () {
+						isOnDrag = false;
+					}, 500);
+				});
+
+				// Return marker
+				return marker;
+			};
+
+			var newMarker;
+			mymap.on("click", function (e) {
+				if (!newMarker) {
+					// Buat marker baru
+					newMarker = addMarker(e.latlng);
+				}
+			});
+		</script>
+	</body>
+</html>

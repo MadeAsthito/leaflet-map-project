@@ -1,0 +1,486 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@100;300;400;500;600;700;800&display=swap");
+/*
+################
+               THITO'S TEMPLATE 
+################
+*/
+
+:root {
+	--color-background: #f6f6f6;
+	--color-white: #ffffff;
+
+	--color-info: #7d8da1;
+	--color-text: #1b0909;
+	--color-text-muted: #575757;
+	--color-light: #848bc82e;
+
+	--color-green: #1b9c85;
+	--color-blue: #6c9bcf;
+
+	--color-primary: #c50910;
+	--color-secondary: #f7a1a1;
+	--color-accent: #a7161b;
+	--color-sub: #ff0060;
+
+	--card-padding: 1.8rem;
+	--sm-card-padding: 0.3em;
+	--padding-section: 6rem;
+
+	--card-border-radius: 2rem;
+
+	--box-shadow: var(--color-light) 0px 8px 24px;
+	--btn-box-shadow: var(--color-light) 0px 5px 15px;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	font-size: 1rem;
+	font-family: "Poppins", sans-serif;
+	background-color: var(--color-background);
+	color: var(--color-text);
+	overflow-x: hidden;
+}
+
+img {
+	width: 100%;
+	display: block;
+	object-fit: cover;
+}
+
+/*
+################
+               TYPHOGRAPHY 
+################
+*/
+
+h1 {
+	font-weight: 750;
+}
+
+h2 {
+	font-weight: 600;
+}
+
+h3 {
+	font-weight: 400;
+}
+
+a {
+	color: var(--color-text);
+}
+
+/*
+################
+               REUSABLE 
+################
+*/
+
+.flex-col-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-row-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.text-primary {
+	color: var(--color-primary);
+}
+
+.text-mute {
+	color: var(--color-info);
+}
+
+.text-sub {
+	color: var(--color-sub);
+}
+
+.text-green {
+	color: var(--color-green);
+}
+
+.text-blue {
+	color: var(--color-blue);
+}
+
+section {
+	margin-inline: 1.8rem;
+	width: min(80vw, 850px);
+}
+
+/*
+################
+               ICONS 
+################
+*/
+
+.icon {
+	background-color: var(--color-white);
+	aspect-ratio: 1;
+	width: 2em;
+	border-radius: 100%;
+	position: relative;
+	transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Hover State */
+.icon:hover {
+	color: var(--color-white);
+}
+
+.icon:hover.blue {
+	background-color: var(--color-blue);
+}
+
+.icon:hover.green {
+	background-color: var(--color-green);
+}
+
+.icon:hover.black {
+	background-color: var(--color-text);
+}
+
+.icon:hover.red {
+	background-color: var(--color-accent);
+}
+
+/* Shadow Optimatisation */
+.icon::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	box-shadow: var(--btn-box-shadow);
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.icon:hover::after {
+	opacity: 0;
+}
+/* end Optimatisation */
+
+/*
+################
+               HEADER SECTION 
+################
+*/
+
+header {
+	padding-block: 1rem;
+}
+
+header h1 {
+	font-size: 1rem;
+	text-align: center;
+	color: var(--color-text-muted);
+}
+
+/*
+################
+               HERO SECTION 
+################
+*/
+
+.hero {
+	gap: 1rem;
+}
+
+.hero--pic {
+	width: 10rem;
+	border-radius: 50%;
+	border: solid var(--color-accent) 0.2rem;
+	overflow: hidden;
+	position: relative;
+}
+
+.hero--pic::before {
+	content: "";
+	position: absolute;
+	inset: 0.1rem;
+	border-radius: inherit;
+	border: 0.18rem solid white;
+	z-index: 1;
+}
+
+.hero--info {
+	gap: 0.2rem;
+}
+
+.hero--info h1,
+.hero--info h2 {
+	text-align: center;
+	font-size: 1.3rem;
+}
+
+.hero--info h2 {
+	color: var(--color-text-muted);
+	font-size: 1rem;
+}
+
+.hero--contact {
+	margin-top: 0.3rem;
+	gap: 1rem;
+}
+
+/*
+################
+               EXPERIENCE SECTION 
+################
+*/
+
+#map_id {
+	height: 40vh;
+}
+
+.map--group {
+	margin-top: 1.2rem;
+	gap: 1.4rem;
+	background-color: var(--color-white);
+	padding-block: 1rem;
+	border-radius: 0.7rem;
+	min-width: 350px;
+	box-shadow: var(--btn-box-shadow);
+	transition: box-shadow ease-in-out 0.2s;
+}
+
+.map--group:hover {
+	box-shadow: var(--color-light);
+}
+
+.map h3 {
+	font-size: 0.9rem;
+	font-weight: 460;
+	text-align: center;
+	cursor: pointer;
+	transition: transform ease-in-out 0.2s;
+}
+
+.map h3:hover {
+	transform: scale(1.08);
+}
+
+.map b {
+	font-size: 1rem;
+}
+
+/*
+################
+               CTA SECTION 
+################
+*/
+
+.cta {
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.cta--btn,
+.option--btn {
+	--ctn-btn: var(--color-white);
+	--cta-text: var(--color-text);
+	--cta-hover-color: #167bce;
+	--cta-hover-text: var(--color-white);
+	border: none;
+	border-radius: 0.7rem;
+	font-weight: 600;
+	font-size: 0.95rem;
+	background-color: var(--ctn-btn);
+	color: var(--cta-text);
+	padding: 1rem 2.5rem;
+	cursor: pointer;
+	box-shadow: var(--btn-box-shadow);
+	transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+		background-color 0.3s ease, color 0.3s ease, box-shadow ease-in-out 0.2s;
+}
+
+.cta--btn:hover,
+.option--btn:hover {
+	background-color: var(--cta-hover-color);
+	transform: scale(0.98);
+	color: var(--cta-hover-text);
+	box-shadow: var(--color-light);
+}
+
+.download-btn {
+	--ctn-btn: #2196f3;
+	--cta-text: var(--color-white);
+}
+
+/*
+################
+               OPTIONS SECTION 
+################
+*/
+
+.option {
+	margin-top: 2rem;
+}
+
+.option--btn-group {
+	background-color: #eeeeee;
+	padding: 1rem 1rem;
+	border-radius: 0.7rem;
+	gap: 2rem;
+	width: 350px;
+	box-shadow: var(--btn-box-shadow);
+	transition: box-shadow ease-in-out 0.2s;
+}
+
+.option--btn-group:hover {
+	box-shadow: var(--color-light);
+}
+
+.option--btn {
+	--ctn-btn: #eeeeee;
+	--cta-text: var(--color-text);
+	--cta-hover-color: var(--color-white);
+	--cta-hover-text: var(--color-text);
+	box-shadow: none;
+}
+
+.active-btn {
+	background-color: var(--color-white);
+}
+
+/*
+################
+               PORTOFLIO SECTION 
+################
+*/
+
+.portfolio {
+	gap: 2rem;
+	flex-wrap: wrap;
+	padding: var(--card-padding);
+	border-radius: 1.2rem;
+	width: min(80vw, 750px);
+	display: none;
+}
+
+.portfolio.active-option {
+	display: flex;
+}
+
+.portfolio--project {
+	width: 20rem;
+	text-align: center;
+	position: relative;
+	margin-block: 1.5rem;
+}
+
+.portfolio--project h3 {
+	position: absolute;
+	bottom: -50px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 21rem;
+	border-radius: 1rem;
+	background-color: var(--color-white);
+	padding: 1rem;
+	font-weight: 600;
+	box-shadow: var(--btn-box-shadow);
+	transition: box-shadow ease-in-out 0.2s;
+}
+
+.portfolio--project h3:hover {
+	box-shadow: var(--color-light);
+}
+
+/*
+################
+               SKILLS SECTION 
+################
+*/
+
+.skills {
+	margin-top: 1.9rem;
+	gap: 1rem;
+	align-items: start;
+	display: none;
+}
+
+.skills.active-option {
+	display: flex;
+}
+
+.skills--group h3 {
+	font-weight: 600;
+	text-align: center;
+}
+
+.skills--detail {
+	margin-top: 1rem;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.skills--detail p {
+	cursor: pointer;
+	text-align: center;
+	color: var(--color-text-muted);
+	font-weight: 500;
+	background-color: #eeeeee;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	flex-grow: 10;
+	box-shadow: var(--btn-box-shadow);
+	transition: box-shadow ease-in-out 0.2s;
+}
+
+.skills--detail p:hover {
+	box-shadow: var(--color-light);
+}
+
+/*
+################
+               ABOUT ME SECTION 
+################
+*/
+
+.about-me {
+	margin-top: 2rem;
+	width: min(80vw, 700px);
+}
+
+.about-me h1 {
+	text-align: center;
+	margin-bottom: 1.2rem;
+}
+
+.about-me p {
+	text-align: justify;
+	margin-block: 0.8rem;
+}
+
+/*
+################
+               FOOTER SECTION 
+################
+*/
+
+footer h1 {
+	font-size: 1rem;
+	text-align: center;
+	padding-block: 2rem;
+}
