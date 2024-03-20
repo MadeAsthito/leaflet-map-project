@@ -54,6 +54,7 @@
 			integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
 			crossorigin=""
 		></script>
+		<link rel="stylesheet" href="css/leaflet-routing-machine.css" />
 
 		<title>Leaflet's Map</title>
 	</head>
@@ -101,37 +102,12 @@
 			<section class="map">
 				<div class="map--group" id="map_id"></div>
 				<div class="cta flex-row-center">
-					<a target="_blank" href="">
-						<button class="cta--btn download-btn">Generate Distance</button>
-					</a>
+					<button class="cta--btn download-btn" id="btn_distance">Generate Distance</button>
 				</div>
 			</section>
 			<section class="about-me">
 				<p>
-					Hello 👋 I'm <b class="text-blue">Made Asthito Yogi Prasanna</b>,
-					studying Teknologi Informasi at Udayana University's Teknik Faculty. I
-					specialize in creating <b>smooth websites</b> and <b>apps.</b>
-				</p>
-				<p>
-					My main interests lie in <b>Full-Stack</b> and
-					<b>Backend Development</b>. I relish crafting user-friendly front ends
-					and powerful back ends.
-				</p>
-				<p>
-					During an internship at <b class="text-sub">SOUL GROUP</b>, I learned
-					under a seasoned mentor, gaining practical skills and real project
-					exposure.
-				</p>
-				<p>
-					Beyond studies, I stay updated on tech trends. Challenges fuel me, and
-					I'm committed to <b>personal</b> and <b>professional growth</b>.
-				</p>
-				<p>
-					Continuing my Udayana journey, I'm eager to learn and contribute to
-					the tech field. My aim:
-					<b class="text-green"
-						>building applications simplifying lives in our digital world</b
-					>. Join me on this exciting adventure!
+					Fakultas Teknik Universitas Udayana secara resmi berdiri pada tanggal <b>1 Oktober 1965</b> dengan Surat <b class="text-blue">Keputusan Menteri PTIP No. 248/Sek/P.U/1965</b>, tanggal <b>20 Oktober 1965</b>, yang terdiri dari dua jurusan yaitu <b class="text-sub">Jurusan Arsitektur</b> dan <b class="text-sub">Jurusan Seni Rupa</b>. Sebagai <b class="text-green">latar belakang pendirian Fakultas Teknik Universitas Udayana</b>, adalah dalam angka pelestarian, pengembangan kebudayaan Daerah Bali pada khususnya dan kebudayaan nasional pada umumnya, terutama di dalam menghadapi pembangunan dan perkembangan kepariwisataan.
 				</p>
 			</section>
 		</main>
@@ -139,6 +115,7 @@
 			<h1>@ Made Asthito Y.P 2024</h1>
 		</footer>
 
+		<script src="js/leaflet-routing-machine.js"></script>
 		<script>
 			// Menampilkan peta
 			var mymap = L.map("map_id").setView(
@@ -248,6 +225,23 @@
 					newMarker = addMarker(e.latlng);
 				}
 			});
+
+			// Event listener untuk btn distance
+			var btn_distance = document.getElementById('btn_distance');
+			var routing;
+			btn_distance.addEventListener("click", function() {
+				if(newMarker) {
+					L.Routing.control({
+						waypoints: [
+							marker.getLatLng(),
+							newMarker.getLatLng()
+						],
+						routeWhileDragging: false
+					}).addTo(mymap);
+
+					mymap.removeLayer(newMarker);
+				}
+			})
 		</script>
 	</body>
 </html>
