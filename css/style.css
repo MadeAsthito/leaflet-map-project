@@ -178,6 +178,7 @@ section {
 .icon:hover::after {
 	opacity: 0;
 }
+
 /* end Optimatisation */
 
 /*
@@ -250,7 +251,7 @@ header h1 {
 */
 
 #map_id {
-	height: 40vh;
+	height: 50vh;
 }
 
 .map--group {

@@ -103,6 +103,9 @@
 				<div class="map--group" id="map_id"></div>
 				<div class="cta flex-row-center">
 					<button class="cta--btn download-btn" id="btn_distance">Generate Distance</button>
+					<a href="">
+						<button class="option--btn download-btn">Reset</button>
+					</a>
 				</div>
 			</section>
 			<section class="about-me">
@@ -228,18 +231,28 @@
 
 			// Event listener untuk btn distance
 			var btn_distance = document.getElementById('btn_distance');
-			var routing;
+			var routingMap;
 			btn_distance.addEventListener("click", function() {
 				if(newMarker) {
-					L.Routing.control({
+					routingMap = L.Routing.control({
 						waypoints: [
-							marker.getLatLng(),
-							newMarker.getLatLng()
+							newMarker.getLatLng(),
+							marker.getLatLng()
 						],
-						routeWhileDragging: false
+						routeWhileDragging: true,
+						addWaypoints: false,       
+						draggableWaypoints: false  
 					}).addTo(mymap);
 
 					mymap.removeLayer(newMarker);
+				}
+			})
+
+			// Event listener untuk btn distance
+			var btn_reset = document.getElementById('btn_reset');
+			btn_reset.addEventListener("click", function() {
+				if(routingMap) {
+					mymap.removeLayer(routingMap);
 				}
 			})
 		</script>
